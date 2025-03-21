@@ -6,6 +6,7 @@ import LogIn from './components/Login';
 import SignUp from './components/SignUp';
 import Blog from './components/Blog';
 import { AuthContextProvider } from './context/AuthContext';
+import TodoList from './components/TodoList';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path='/' element={<Home />}/>
         <Route path='/pricing' element={<Pricing />}/>
         <Route path='/login' element={<LogIn />}/>
+        <Route path='/todo' element={<TodoList />}/>
         <Route path='/register' element={<SignUp />}/>
         <Route path='/blog' element={<Blog />}/>
       </Routes>

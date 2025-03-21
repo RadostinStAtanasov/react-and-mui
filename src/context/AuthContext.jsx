@@ -1,10 +1,12 @@
 import { createContext, use, useContext, useState } from "react";
 
-export const AuthContext = createContext();
+export const AuthContext = createContext( {
+    isAuthenticated: false,
+});
 
 export const AuthContextProvider = (props) => {
 
-    const [auth, setAuth] = useState([]);
+    const [auth, setAuth] = useState({});
 
     const login = (authData) => {
         setAuth(authData);
@@ -12,7 +14,8 @@ export const AuthContextProvider = (props) => {
 
     const contextData = {
         ...auth,
-        login
+        login,
+        isAuthenticated: auth.email
     };
 
 

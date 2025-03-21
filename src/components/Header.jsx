@@ -14,17 +14,20 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
+import { useAuthContext } from '../context/AuthContext';
 
 const pages = [
     { title:'Home', path: '/'},
     { title:'Pricing', path: 'pricing'},
     { title:'Blog', path: 'blog'},
-    { title:'Login', path: 'login'},
-    { title:'Register', path: 'register'},
+    { title:'TodoList', path: 'todo'},
+    { title:'Login', path: 'login', guestOnly: true },
+    { title:'Register', path: 'register', guestOnly: true},
 ];
 const settings = ['Profile', 'Logout'];
 
 function Header() {
+  const { isAuthenticated } = useAuthContext();
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -120,7 +123,7 @@ function Header() {
             LOGO
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map(({title, path}) => (
+            {pages.filter(({guestOnly}) => isAuthenticated ? !guestOnly : true).map(({title, path}) => (
               <Button
                 component={Link}
                 to={path}
