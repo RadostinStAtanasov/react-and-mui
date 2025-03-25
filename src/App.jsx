@@ -7,6 +7,7 @@ import SignUp from './components/SignUp';
 import Blog from './components/Blog';
 import { AuthContextProvider } from './context/AuthContext';
 import TodoList from './components/TodoList';
+import CreateTodo from './components/CreateTodo';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path='/todo' element={<TodoList />}/>
         <Route path='/register' element={<SignUp />}/>
         <Route path='/blog' element={<Blog />}/>
+        <Route path='/todos/add' element={<CreateTodo />}/>
       </Routes>
     </AuthContextProvider>
     </>
