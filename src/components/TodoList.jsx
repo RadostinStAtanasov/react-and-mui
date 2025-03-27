@@ -1,14 +1,15 @@
 import * as React from 'react';
 
 import List from '@mui/material/List';
-import { useTodosQuery } from '../queries/useTodosQuery';
-import { useTodosUpdate } from '../queries/useTodosUpdate';
+import useGetTodos from '../queries/useGetTodos';
+
 import TodoListItem from './TodoListItem';
+import { useTodosUpdate } from '../queries/useTodosUpdate';
 
 
 
 export default function TodoList() {
-  const todosQuery = useTodosQuery();
+  const todosQuery = useGetTodos();
   const todoMutation = useTodosUpdate();
 
   const todoClickHandle = (todo) => {

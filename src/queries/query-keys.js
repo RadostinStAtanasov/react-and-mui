@@ -1,8 +1,7 @@
-// export const todosKeys = () => ['todos'];
-
 
 export const todosKeys = {
     all: () => ['todos'],
     one: (todoId) => ['todos', todoId],
-    update: () => ['mutate-todos']
+    update: () => ['mutate-todos'],
+    create: () => ['create-todos'],
 }

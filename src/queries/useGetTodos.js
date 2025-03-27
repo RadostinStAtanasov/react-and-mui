@@ -4,11 +4,11 @@ import todoServices from '../services/todoServices';
 
 
 
-export function useTodosQuery() {
+export default function useGetTodos() {
         const todosQuery = useQuery({
           queryKey: todosKeys.all(),
-          queryFn: todoServices.getTodos,
-          staleTime: 1 * 60 * 1000,
+          queryFn: todoServices.getAll,
+          staleTime: 10 * 1000,
           retry: 0,
         });
 

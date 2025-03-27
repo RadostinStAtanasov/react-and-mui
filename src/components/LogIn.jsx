@@ -21,7 +21,7 @@ import ForgotPassword from './shared-theme/ForgotPassword';
 import AppTheme from './shared-theme/AppTheme';
 import ColorModeSelect from './shared-theme/ColorModeSelect';
 import { GoogleIcon, FacebookIcon, SitemarkIcon } from './shared-theme/CustomIcons';
-import { AuthContext, useAuthContext } from '../context/AuthContext';
+import { useAuthContext } from '../context/AuthContext';
 
 const Card = styled(MuiCard)(({ theme }) => ({
   display: 'flex',

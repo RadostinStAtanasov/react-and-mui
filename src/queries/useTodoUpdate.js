@@ -3,17 +3,14 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import todoServices from "../services/todoServices";
 import { todosKeys } from "./query-keys";
 
-export function useTodosUpdate() {
+export function useTodoUpdate(todoId) {
     const queryClient = useQueryClient();
 
     const todoMutation = useMutation({
         mutationFn: todoServices.update,
         mutationKey: todosKeys.update(),
         onSuccess: ({data}) => {
-            // queryClient.invalidateQueries(todosKeys.all())
-            queryClient.setQueryData(todosKeys.all(), (oldTodos) => {
-                return oldTodos.map(todo => todo.id === data.id ? data : todo)
-            })
+            queryClient.setQueryData(todosKeys.one(todoId))
         },
     })
 

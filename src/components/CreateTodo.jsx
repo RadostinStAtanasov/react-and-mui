@@ -5,6 +5,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query"
 import axios from "axios"
 import { useAuthContext } from "../context/AuthContext"
 import { useNavigate } from "react-router-dom"
+import { todosKeys } from "../queries/query-keys"
 
 export default function CreateTodo() {
     const navigate = useNavigate();
@@ -13,15 +14,13 @@ export default function CreateTodo() {
 
     const createTodoMutation = useMutation({
         mutationFn: createTodo,
-        mutationKey: ['new-todo'],
+        mutationKey: todosKeys.create(),
         onSuccess: (data) => {
-            queryClient.invalidateQueries(todosKeys.all())
-            queryClient.setQueriesData(todosKeys.all(), (oldCache) => {
-                const newCache = [...oldCache, data];
-
-                return newCache;
-            })
-        }
+            queryClient.invalidateQueries({
+                queryKey: todosKeys.all(),
+                exact: true,
+            });
+        },
     });
 
     const formSubmitHandler = (e) => {
