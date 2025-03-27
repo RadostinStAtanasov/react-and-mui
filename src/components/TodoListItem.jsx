@@ -6,6 +6,7 @@ import Checkbox from '@mui/material/Checkbox';
 import IconButton from '@mui/material/IconButton';
 import CommentIcon from '@mui/icons-material/Comment';
 import SettingsIcon from '@mui/icons-material/Settings';
+import { Link } from 'react-router-dom';
 
 export default function TodoListItem({
     todo,
@@ -21,6 +22,8 @@ export default function TodoListItem({
             <IconButton 
                 edge="end" 
                 aria-label="comments"
+                LinkComponent={Link}
+                to={`/todos/${todo.id}`}
                 >
                 <SettingsIcon />
             </IconButton>
